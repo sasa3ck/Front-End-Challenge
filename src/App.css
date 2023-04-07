@@ -48,3 +48,14 @@ button {
   font-size: 1.5rem;
 }
 
+.key.default {
+  box-shadow: 5px 5px 10px #474343, -5px -5px 10px #fff;
+}
+
+.key.pressed {
+  background-color: #00f;
+}
+
+.key.released {
+  background-color: #0f0;
+}
