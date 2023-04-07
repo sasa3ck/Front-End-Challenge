@@ -1,0 +1,50 @@
+.row {
+  height: 60px;
+}
+
+button {
+  background: rgb(214, 214, 214);
+  color: black;
+  border: none;
+  padding: 0 15px;
+  margin: 7px;
+  min-width: 45px;
+  height: 45px;
+  box-shadow: 5px 5px 10px #474343, -5px -5px 10px #fff;
+  font-size: 1.2rem;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+}
+
+.key:hover {
+  background-color: rgb(190, 190, 190);
+  transition: 0.5s;
+}
+
+.space {
+  margin-left: 25px;
+}
+
+.spaceBtn {
+  min-width: 300px;
+}
+
+.btnNone {
+  visibility: hidden;
+}
+
+.btnEnter{
+  min-width: 110px;
+}
+
+.fontBasic {
+  width: 90px;
+  font-size: 0.9rem;
+  padding: 0 2px;
+}
+
+.fontBasicSize {
+  font-size: 1.5rem;
+}
+
