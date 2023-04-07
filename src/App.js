@@ -12,6 +12,7 @@ function App() {
   const [pressedKeys, setPressedKeys] = useState({});
   const [repeatingKeys, setRepeatingKeys] = useState([]);
   const [timer, setTimer] = useState(60);
+  const [isRepeating, setIsRepeating] = useState("");
 
   useEffect(() => {
     let interval;
@@ -23,6 +24,7 @@ function App() {
       setPressedKeys({});
       setRepeatingKeys([]);
       setTimer(60);
+      setIsRepeating("");
     }
     return () => clearInterval(interval);
   }, [timer]);
@@ -49,6 +51,26 @@ function App() {
     setRepeatingKeys((prevState) => [...prevState, key]);
   };
 
+  const handleRepeat = () => {
+    setIsRepeating("btnDisabled");
+    setRepeatingKeys([]);
+    repeatingKeys.forEach((key, index) => {
+      setTimeout(() => {
+        setPressedKeys((prevState) => ({
+          ...prevState,
+          [key]: KEY_STATE.PRESSED,
+        }));
+        setTimeout(() => {
+          setPressedKeys((prevState) => ({
+            ...prevState,
+            [key]: KEY_STATE.DEFAULT,
+          }));
+        }, 200);
+      }, index * 200);
+    });
+  };
+
+
   const clickKeyDown = (e) => handleKeyDown(e.key);
   const clickKeyUp = (e) => handleKeyUp(e.key);
 
@@ -69,6 +91,13 @@ function App() {
           {/* {timer > 0 ? `Reset in ${timer}s` : "Keys Reset"} */}
           Reset in: {timer}s
         </div>
+        <button
+          className={`${isRepeating}`}
+          disabled={isRepeating}
+          onClick={handleRepeat}
+        >
+          Repeat Keys
+        </button>
       </div>
 
       <div className="flex justify-center">

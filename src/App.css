@@ -63,3 +63,7 @@ button {
 .timer {
   font-size: 1.5rem;
 }
+
+.btnDisabled {
+  box-shadow: 1px 1px 2px #fff8f8, -1px -1px 2px #474343;
+}
