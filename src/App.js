@@ -11,6 +11,22 @@ const KEY_STATE = {
 function App() {
   const [pressedKeys, setPressedKeys] = useState({});
   const [repeatingKeys, setRepeatingKeys] = useState([]);
+  const [timer, setTimer] = useState(60);
+
+  useEffect(() => {
+    let interval;
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer(timer - 1);
+      }, 1000);
+    } else {
+      setPressedKeys({});
+      setRepeatingKeys([]);
+      setTimer(60);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
+
 
   const handleKeyDown = (key) => {
     setPressedKeys((prevState) => ({
@@ -48,6 +64,13 @@ function App() {
 
   return (
     <div className="container mx-auto mt-[400px] px-4">
+      <div className="flex justify-around mb-10">
+        <div className="timer flex justify-center items-center">
+          {/* {timer > 0 ? `Reset in ${timer}s` : "Keys Reset"} */}
+          Reset in: {timer}s
+        </div>
+      </div>
+
       <div className="flex justify-center">
         <div>
           <div className="row flex">

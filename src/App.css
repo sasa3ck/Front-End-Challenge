@@ -59,3 +59,7 @@ button {
 .key.released {
   background-color: #0f0;
 }
+
+.timer {
+  font-size: 1.5rem;
+}
